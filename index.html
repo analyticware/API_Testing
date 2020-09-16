@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <link href="https://unpkg.com/thaparbot@latest/dist/index.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/thaparbot@latest/dist/index.js"></script>
+    <h1 id="display">Display some text</h1>
+    <script>
+        fetch("http://13.233.190.248:4040/chat",
+            {
+                
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        crossDomain:true,
+        body: JSON.stringify({text: 'tell me about internships'})
+       })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            document.getElementById('display').innerHTML = myJson['data'];
+        })
+    </script>
+</body>
+</html>
